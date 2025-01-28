@@ -5,6 +5,7 @@ import fs from 'fs'
 import chalk from 'chalk'
 
 const pages = config.pages
+console.log(pages, config.build);
 const options = pages.map((page) => {
 	const css = path.join(config.build, `toolz/css/${page}.css`)
 	const content = [
