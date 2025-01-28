@@ -14,8 +14,13 @@ jobs:
         - name: Checkout branch
           uses: actions/checkout@v4
 
+        - name: Setup Node.js
+          uses: actions/setup-node@v4
+          with:
+            node-version: '16'
+
         - name: Clean install dependencies
-          run: npm install
+          run: npm ci
 
         - name: Build app
           run: npm run build
@@ -26,7 +31,5 @@ jobs:
         - name: deploy
           uses: peaceiris/actions-gh-pages@v3.9.3
           with:
-           github_token: ${{ secrets.GITHUB_TOKEN }}
-           publish_dir: ./dist
-          env:
-           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            publish_dir: ./dist
